@@ -169,16 +169,16 @@ namespace AlgorithmsDataStructures2
         public List<T> EvenTrees()
         {
             List<T> list = new List<T>();
-            if (Root != null) EdgesToCut(list, Root);
+            if (Root != null) MarkEdges(list, Root);
             return list;
         }
 
-        private int EdgesToCut(List<T> forest, SimpleTreeNode<T> node)
+        private int MarkEdges(List<T> forest, SimpleTreeNode<T> node)
         {
             int count = 1;
             if (node.Children == null) return count;
             foreach (SimpleTreeNode<T> n in node.Children)
-                count += EdgesToCut(forest, n);
+                count += MarkEdges(forest, n);
             if (count % 2 == 0 && node.Parent != null)
             {
                 forest.Add(node.Parent.NodeValue);

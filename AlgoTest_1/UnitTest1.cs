@@ -83,6 +83,60 @@ namespace AlgoTest_1
             Assert.IsTrue(forest.Count == 0);
         }
 
+        [TestMethod]
+        public void TestTree_1Count_G()
+        {
+            SimpleTreeNode<int> node_1 = new SimpleTreeNode<int>(1, null);
+            SimpleTreeNode<int> node_2 = new SimpleTreeNode<int>(11, null);
+            SimpleTreeNode<int> node_3 = new SimpleTreeNode<int>(111, null);
+
+            SimpleTree<int> tree = new SimpleTree<int>(node_1);
+            tree.AddChild(node_1, node_2);
+            tree.AddChild(node_2, node_3);
+
+            List<int> forest = tree.EvenTrees();
+            foreach (int value in forest)
+                Assert.IsTrue(value == 1 || value == 11);
+        }
+
+        [TestMethod]
+        public void TestTree_1Count_H()
+        {
+            SimpleTreeNode<int> node_1 = new SimpleTreeNode<int>(1, null);
+            SimpleTreeNode<int> node_2 = new SimpleTreeNode<int>(11, null);
+
+            SimpleTree<int> tree = new SimpleTree<int>(node_1);
+            tree.AddChild(node_1, node_2);
+
+            List<int> forest = tree.EvenTrees();
+            Assert.IsTrue(forest.Count == 0);
+        }
+
+        [TestMethod]
+        public void TestTree_1Count_I()
+        {
+            SimpleTreeNode<int> node_1 = new SimpleTreeNode<int>(1, null);
+            SimpleTreeNode<int> node_2 = new SimpleTreeNode<int>(11, null);
+            SimpleTreeNode<int> node_3 = new SimpleTreeNode<int>(12, null);
+
+            SimpleTree<int> tree = new SimpleTree<int>(node_1);
+            tree.AddChild(node_1, node_2);
+            tree.AddChild(node_1, node_3);
+
+            List<int> forest = tree.EvenTrees();
+            Assert.IsTrue(forest.Count == 0);
+        }
+
+        [TestMethod]
+        public void TestTree_1Count_J()
+        {
+            SimpleTreeNode<int> node_1 = new SimpleTreeNode<int>(1, null);
+            SimpleTree<int> tree = new SimpleTree<int>(node_1);
+            
+            List<int> forest = tree.EvenTrees();
+            Assert.IsTrue(forest.Count == 0);
+        }
+
         /*
          * Блоки кода предназначенные для тестирования, 
          *      но не являющиеся тестами
